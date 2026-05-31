@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "Alloy Calculator",
+    "ironworkingTitle": "Bloom and Steel Calculator",
     "prospectorPickTitle": "Ore Prospecting Helper",
     "copyright": "2026 © Kopnu"
   },
@@ -8,6 +9,7 @@
     "label": "Main navigation",
     "title": "TerraFirmaCraft",
     "alloys": "Alloys",
+    "ironworking": "Bloom and Steel",
     "prospectorPick": "Ore Prospecting",
     "anvilHelper": "Anvil Helper"
   },
@@ -32,6 +34,51 @@
   "inventory": {
     "useAvailable": "Use available portions",
     "ingotPortion": "Ingots (144 mB)"
+  },
+  "ironworking": {
+    "mode": "Calculation target",
+    "source": "Iron Ore",
+    "castIron": "Cast Iron",
+    "required": {
+      "title": "Required"
+    },
+    "bloom": {
+      "title": "Bloom",
+      "amount": "Bloom count",
+      "formula": "Each bloom needs {mb} mB of cast iron and {charcoal} charcoal."
+    },
+    "steel": {
+      "title": "Steel",
+      "amount": "Steel ingot count",
+      "formula": "The blast furnace makes pig iron: iron-bearing items, flux, and charcoal are used in a 1:1:1 ratio, or with more charcoal. Then a pig iron ingot is worked into high carbon steel and steel."
+    },
+    "sources": {
+      "small-ore": "16 mB",
+      "poor-ore": "24 mB",
+      "normal-ore": "36 mB",
+      "rich-ore": "48 mB",
+      "cast-iron-ingot": "Ingots (144 mB)"
+    },
+    "results": {
+      "requiredMetal": "Required metal",
+      "sourceMetal": "Metal in 1 item",
+      "availableMetal": "Available metal",
+      "ironInput": "Iron-bearing items",
+      "totalMb": "Total mB",
+      "charcoal": "Charcoal",
+      "charcoalMinimum": "Charcoal minimum",
+      "flux": "Flux",
+      "surplus": "Extra metal",
+      "shortage": "Missing metal",
+      "variants": "Variants",
+      "items": "{count} pcs.",
+      "itemsWithMb": "{count} pcs. ({mb} mB)",
+      "charcoalWithCount": "Charcoal x {count}",
+      "fluxWithCount": "Flux x {count}"
+    },
+    "validation": {
+      "notEnoughMetal": "The available portions cannot build the exact metal volume for the selected result."
+    }
   },
   "prospector": {
     "reset": "Reset history and calculation",

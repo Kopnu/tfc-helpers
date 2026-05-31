@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "Калькулятор сплавов",
+    "ironworkingTitle": "Калькулятор крицы и стали",
     "prospectorPickTitle": "Помощник в поиске руды",
     "copyright": "2026 © Kopnu"
   },
@@ -8,6 +9,7 @@
     "label": "Основная навигация",
     "title": "TerraFirmaCraft",
     "alloys": "Сплавы",
+    "ironworking": "Крица и сталь",
     "prospectorPick": "Поиск руды",
     "anvilHelper": "Anvil Helper"
   },
@@ -32,6 +34,51 @@
   "inventory": {
     "useAvailable": "Учитывать доступные порции",
     "ingotPortion": "Слитки (144 mB)"
+  },
+  "ironworking": {
+    "mode": "Что считать",
+    "source": "Руда железа",
+    "castIron": "Чугун",
+    "required": {
+      "title": "Обязательно"
+    },
+    "bloom": {
+      "title": "Крица",
+      "amount": "Количество криц",
+      "formula": "На 1 крицу нужно {mb} mB чугуна и {charcoal} угля."
+    },
+    "steel": {
+      "title": "Сталь",
+      "amount": "Количество стальных слитков",
+      "formula": "Домна делает чугун: железосодержащие предметы, флюс и уголь идут в пропорции 1:1:1 или больше угля. Затем слиток чугуна перековывается в высокоуглеродистую сталь и в сталь."
+    },
+    "sources": {
+      "small-ore": "16 mB",
+      "poor-ore": "24 mB",
+      "normal-ore": "36 mB",
+      "rich-ore": "48 mB",
+      "cast-iron-ingot": "Слитки (144 mB)"
+    },
+    "results": {
+      "requiredMetal": "Нужно металла",
+      "sourceMetal": "Металла в 1 предмете",
+      "availableMetal": "Доступно металла",
+      "ironInput": "Железосодержащие предметы",
+      "totalMb": "Итого mB",
+      "charcoal": "Уголь",
+      "charcoalMinimum": "Уголь минимум",
+      "flux": "Флюс",
+      "surplus": "Лишний металл",
+      "shortage": "Не хватает металла",
+      "variants": "Варианты",
+      "items": "{count} шт.",
+      "itemsWithMb": "{count} шт. ({mb} mB)",
+      "charcoalWithCount": "Уголь x {count}",
+      "fluxWithCount": "Флюс x {count}"
+    },
+    "validation": {
+      "notEnoughMetal": "Из доступных порций нельзя собрать точный объем металла для выбранного результата."
+    }
   },
   "prospector": {
     "reset": "Сбросить историю и подсчет",

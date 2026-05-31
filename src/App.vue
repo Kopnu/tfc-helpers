@@ -3,11 +3,13 @@ import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { saveLocale, supportedLocales } from './i18n'
 import AlloyCalculatorPage from './pages/AlloyCalculatorPage.vue'
+import IronworkingCalculatorPage from './pages/IronworkingCalculatorPage.vue'
 import ProspectorPickPage from './pages/ProspectorPickPage.vue'
 
 const activePage = ref('alloys')
 const navPages = [
   { id: 'alloys', labelKey: 'nav.alloys' },
+  { id: 'ironworking', labelKey: 'nav.ironworking' },
   { id: 'prospector-pick', labelKey: 'nav.prospectorPick' }
 ]
 const externalLinks = [
@@ -96,6 +98,7 @@ watch(
     </nav>
 
     <AlloyCalculatorPage v-if="activePage === 'alloys'" />
+    <IronworkingCalculatorPage v-else-if="activePage === 'ironworking'" />
     <ProspectorPickPage v-else />
 
     <footer class="app-footer">
