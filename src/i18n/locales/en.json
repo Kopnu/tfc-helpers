@@ -1,0 +1,68 @@
+{
+  "app": {
+    "title": "Alloy Calculator",
+    "copyright": "© Kopnu"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "title": "TFC Calculators",
+    "alloys": "Alloys"
+  },
+  "controls": {
+    "alloy": "Alloy",
+    "result": "Result",
+    "resultUnitLabel": "Result unit",
+    "ingots": "Ingots",
+    "amount": "Amount",
+    "total": "Total"
+  },
+  "recipe": {
+    "findValid": "Find a valid recipe",
+    "valid": "Recipe is valid",
+    "needsFix": "Needs adjustment",
+    "selected": "Selected",
+    "difference": "Difference",
+    "auto": "Auto",
+    "portions": "Portions:",
+    "noMatchingCombinations": "no matching combinations"
+  },
+  "inventory": {
+    "useAvailable": "Use available portions",
+    "ingotPortion": "Ingots (144 mB)"
+  },
+  "validation": {
+    "amountGreaterThanZero": "Enter a result amount greater than zero.",
+    "sumMismatch": "Ingredient sum does not match the result: {amount} mB {direction}.",
+    "missing": "missing",
+    "extra": "extra",
+    "percentOutOfRange": "{name}: {percent}%, needs {min}-{max}%.",
+    "cannotBuildVolume": "{name}: selected volume cannot be built from available portions."
+  },
+  "alloys": {
+    "bismuth-bronze": "Bismuth Bronze",
+    "black-bronze": "Black Bronze",
+    "bronze": "Bronze",
+    "brass": "Brass",
+    "rose-gold": "Rose Gold",
+    "sterling-silver": "Sterling Silver",
+    "weak-steel": "Weak Steel",
+    "weak-blue-steel": "Weak Blue Steel",
+    "weak-red-steel": "Weak Red Steel"
+  },
+  "ingredients": {
+    "bismuth": "Bismuth",
+    "bismuth-bronze": "Bismuth Bronze",
+    "black-bronze": "Black Bronze",
+    "black-steel": "Black Steel",
+    "brass": "Brass",
+    "copper": "Copper",
+    "gold": "Gold",
+    "nickel": "Nickel",
+    "rose-gold": "Rose Gold",
+    "silver": "Silver",
+    "steel": "Steel",
+    "sterling-silver": "Sterling Silver",
+    "tin": "Tin",
+    "zinc": "Zinc"
+  }
+}

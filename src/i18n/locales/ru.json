@@ -1,0 +1,68 @@
+{
+  "app": {
+    "title": "Калькулятор сплавов",
+    "copyright": "© Kopnu"
+  },
+  "nav": {
+    "label": "Основная навигация",
+    "title": "TFC калькуляторы",
+    "alloys": "Сплавы"
+  },
+  "controls": {
+    "alloy": "Сплав",
+    "result": "Результат",
+    "resultUnitLabel": "Единица результата",
+    "ingots": "Слитки",
+    "amount": "Количество",
+    "total": "Итого"
+  },
+  "recipe": {
+    "findValid": "Подобрать валидный вариант",
+    "valid": "Рецепт валиден",
+    "needsFix": "Нужно поправить",
+    "selected": "Выбрано",
+    "difference": "Разница",
+    "auto": "Авто",
+    "portions": "Порции:",
+    "noMatchingCombinations": "нет подходящих комбинаций"
+  },
+  "inventory": {
+    "useAvailable": "Учитывать доступные порции",
+    "ingotPortion": "Слитки (144 mB)"
+  },
+  "validation": {
+    "amountGreaterThanZero": "Введите количество результата больше нуля.",
+    "sumMismatch": "Сумма ингредиентов не равна результату: {direction} {amount} mB.",
+    "missing": "не хватает",
+    "extra": "лишние",
+    "percentOutOfRange": "{name}: {percent}%, нужно {min}-{max}%.",
+    "cannotBuildVolume": "{name}: выбранный объем нельзя собрать из доступных порций."
+  },
+  "alloys": {
+    "bismuth-bronze": "Висмутовая бронза",
+    "black-bronze": "Черная бронза",
+    "bronze": "Бронза",
+    "brass": "Латунь",
+    "rose-gold": "Розовое золото",
+    "sterling-silver": "Стерлинговое серебро",
+    "weak-steel": "Слабая сталь",
+    "weak-blue-steel": "Слабая синяя сталь",
+    "weak-red-steel": "Слабая красная сталь"
+  },
+  "ingredients": {
+    "bismuth": "Висмут",
+    "bismuth-bronze": "Висмутовая бронза",
+    "black-bronze": "Черная бронза",
+    "black-steel": "Черная сталь",
+    "brass": "Латунь",
+    "copper": "Медь",
+    "gold": "Золото",
+    "nickel": "Никель",
+    "rose-gold": "Розовое золото",
+    "silver": "Серебро",
+    "steel": "Сталь",
+    "sterling-silver": "Стерлинговое серебро",
+    "tin": "Олово",
+    "zinc": "Цинк"
+  }
+}
