@@ -1,12 +1,15 @@
 {
   "app": {
     "title": "Калькулятор сплавов",
-    "copyright": "© Kopnu"
+    "prospectorPickTitle": "Помощник в поиске руды",
+    "copyright": "2026 © Kopnu"
   },
   "nav": {
     "label": "Основная навигация",
-    "title": "TFC калькуляторы",
-    "alloys": "Сплавы"
+    "title": "TerraFirmaCraft",
+    "alloys": "Сплавы",
+    "prospectorPick": "Поиск руды",
+    "anvilHelper": "Anvil Helper"
   },
   "controls": {
     "alloy": "Сплав",
@@ -29,6 +32,35 @@
   "inventory": {
     "useAvailable": "Учитывать доступные порции",
     "ingotPortion": "Слитки (144 mB)"
+  },
+  "prospector": {
+    "reset": "Сбросить историю и подсчет",
+    "settings": {
+      "title": "Настройки области Prospector's Pick",
+      "sizeX": "Размер X",
+      "sizeY": "Размер Y",
+      "sizeZ": "Размер Z"
+    },
+    "addSample": {
+      "title": "Добавить замер",
+      "add": "Добавить",
+      "helpButton": "Как узнать позицию блока",
+      "helpLine1": "Наведи прицел на блок, по которому сделал замер, и нажми F3.",
+      "helpLine2": "В правой части экрана найди Targeted Block: там будут координаты X, Y и Z выбранного блока."
+    },
+    "probableArea": {
+      "title": "Вероятная область",
+      "empty": "Добавь первый замер, чтобы увидеть область поиска.",
+      "noOverlap": "Области замеров не пересекаются. Проверь координаты или размер области Prospector's Pick.",
+      "blocks": "Блоков"
+    },
+    "history": {
+      "title": "История замеров",
+      "empty": "Замеров пока нет.",
+      "number": "#",
+      "scanArea": "Область замера",
+      "remove": "Удалить"
+    }
   },
   "validation": {
     "amountGreaterThanZero": "Введите количество результата больше нуля.",

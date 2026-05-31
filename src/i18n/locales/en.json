@@ -1,12 +1,15 @@
 {
   "app": {
     "title": "Alloy Calculator",
-    "copyright": "© Kopnu"
+    "prospectorPickTitle": "Ore Prospecting Helper",
+    "copyright": "2026 © Kopnu"
   },
   "nav": {
     "label": "Main navigation",
-    "title": "TFC Calculators",
-    "alloys": "Alloys"
+    "title": "TerraFirmaCraft",
+    "alloys": "Alloys",
+    "prospectorPick": "Ore Prospecting",
+    "anvilHelper": "Anvil Helper"
   },
   "controls": {
     "alloy": "Alloy",
@@ -29,6 +32,35 @@
   "inventory": {
     "useAvailable": "Use available portions",
     "ingotPortion": "Ingots (144 mB)"
+  },
+  "prospector": {
+    "reset": "Reset history and calculation",
+    "settings": {
+      "title": "Prospector's Pick Area Settings",
+      "sizeX": "X size",
+      "sizeY": "Y size",
+      "sizeZ": "Z size"
+    },
+    "addSample": {
+      "title": "Add Sample",
+      "add": "Add",
+      "helpButton": "How to find the block position",
+      "helpLine1": "Aim at the block you sampled and press F3.",
+      "helpLine2": "Find Targeted Block on the right side of the screen: it shows the selected block's X, Y, and Z coordinates."
+    },
+    "probableArea": {
+      "title": "Probable Area",
+      "empty": "Add the first sample to see the search area.",
+      "noOverlap": "Sample areas do not overlap. Check the coordinates or the Prospector's Pick area size.",
+      "blocks": "Blocks"
+    },
+    "history": {
+      "title": "Sample History",
+      "empty": "No samples yet.",
+      "number": "#",
+      "scanArea": "Sample area",
+      "remove": "Remove"
+    }
   },
   "validation": {
     "amountGreaterThanZero": "Enter a result amount greater than zero.",
