@@ -1,0 +1,151 @@
+.ironworking-card {
+  background: #fffefa;
+  border: 1px solid #ddd5c7;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(45, 37, 25, 0.08);
+  margin-bottom: 16px;
+  padding: 18px;
+}
+
+.ironworking-grid,
+.ironworking-controls,
+.ironworking-summary,
+.ironworking-result-list {
+  display: grid;
+  gap: 12px;
+}
+
+.ironworking-grid {
+  grid-template-columns: 1fr;
+}
+
+.ironworking-controls {
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+}
+
+.ironworking-mode-toggle {
+  min-width: 220px;
+}
+
+.ironworking-formula {
+  background: #f2f7fb;
+  border: 1px solid #c9ddea;
+  border-radius: 8px;
+  color: #21465f;
+  font-weight: 700;
+  line-height: 1.45;
+  margin-top: 14px;
+  padding: 12px;
+}
+
+.ironworking-summary {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.ironworking-summary div,
+.ironworking-result-list div {
+  background: #edf4ef;
+  border: 1px solid #c4decf;
+  border-radius: 8px;
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+}
+
+.ironworking-result-list div {
+  background: #fffefa;
+  border-color: #e5ded2;
+  grid-template-columns: minmax(160px, 1fr) auto;
+}
+
+.ironworking-result-list {
+  margin-top: 14px;
+}
+
+.ironworking-inventory {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.ironworking-required {
+  border-top: 1px solid #e5ded2;
+  margin-top: 14px;
+  padding-top: 14px;
+}
+
+.ironworking-required summary {
+  color: #17211b;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.ironworking-options {
+  border-top: 1px solid #e5ded2;
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 14px;
+}
+
+.ironworking-options-table-wrap {
+  overflow-x: auto;
+  text-align: center;
+}
+
+.ironworking-options-table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  table-layout: fixed;
+  width: auto;
+}
+
+.ironworking-options-table th,
+.ironworking-options-table td {
+  border-top: 1px solid #e5ded2;
+  font-size: 15px;
+  min-width: 94px;
+  padding: 7px 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ironworking-options-table th {
+  color: #6a6255;
+  font-weight: 900;
+}
+
+.ironworking-options-table th:first-child,
+.ironworking-options-table td:first-child {
+  text-align: center;
+}
+
+.ironworking-summary span,
+.ironworking-result-list span {
+  color: #6a6255;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ironworking-summary strong,
+.ironworking-result-list strong {
+  font-size: 20px;
+  text-align: right;
+}
+
+@media (max-width: 820px) {
+  .ironworking-grid,
+  .ironworking-controls,
+  .ironworking-summary,
+  .ironworking-result-list div {
+    grid-template-columns: 1fr;
+  }
+
+  .ironworking-result-list strong {
+    text-align: left;
+  }
+}

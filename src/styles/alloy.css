@@ -1,0 +1,221 @@
+.controls-band,
+.recipe-band,
+.mix-panel {
+  background: #fffefa;
+  border: 1px solid #ddd5c7;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(45, 37, 25, 0.08);
+}
+
+.controls-band {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(220px, 1.6fr) minmax(190px, 1fr) minmax(130px, 0.8fr) auto;
+  margin-bottom: 16px;
+  padding: 18px;
+}
+
+.result-meter {
+  align-self: end;
+  border-left: 1px solid #ddd5c7;
+  display: grid;
+  gap: 4px;
+  min-width: 110px;
+  padding-left: 18px;
+}
+
+.result-meter span,
+.mix-summary span {
+  color: #6a6255;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.result-meter strong {
+  font-size: 24px;
+}
+
+.recipe-band,
+.mix-panel {
+  margin-bottom: 16px;
+  padding: 18px;
+}
+
+.recipe-ranges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.recipe-ranges span,
+.combo-chip {
+  background: #edf4ef;
+  border: 1px solid #c4decf;
+  border-radius: 999px;
+  color: #244434;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 7px 10px;
+}
+
+.mix-summary {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.mix-summary div {
+  display: grid;
+  gap: 3px;
+  text-align: right;
+}
+
+.mix-summary .status-pill {
+  display: inline-flex;
+  margin-right: auto;
+  text-align: center;
+}
+
+.mix-summary strong {
+  font-size: 22px;
+}
+
+.ingredient-row {
+  border-top: 1px solid #e5ded2;
+  display: grid;
+  gap: 12px;
+  padding: 18px 0;
+}
+
+.ingredient-row:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.ingredient-row.invalid .amount-readout strong,
+.ingredient-row.invalid .amount-readout span {
+  color: #b42318;
+}
+
+.ingredient-main {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.ingredient-title {
+  display: grid;
+  gap: 4px;
+}
+
+.ingredient-title span,
+.amount-readout span,
+.slider-limits,
+.combo-label,
+.empty-combo {
+  color: #6a6255;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.amount-readout {
+  display: grid;
+  gap: 3px;
+  min-width: 120px;
+  text-align: right;
+}
+
+.amount-readout strong {
+  font-size: 24px;
+}
+
+.volume-slider {
+  accent-color: #2d6a4f;
+  width: 100%;
+}
+
+.volume-slider.automatic {
+  opacity: 0.55;
+}
+
+.auto-toggle {
+  align-items: center;
+  display: inline-flex;
+  gap: 7px;
+  justify-content: flex-end;
+  min-width: 72px;
+}
+
+.auto-toggle input {
+  height: 18px;
+  width: 18px;
+}
+
+.auto-toggle span {
+  color: #244434;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.slider-limits {
+  display: flex;
+  justify-content: space-between;
+}
+
+.combos {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.combo-chip {
+  background: #f2f7fb;
+  border-color: #c9ddea;
+  color: #21465f;
+  display: grid;
+  gap: 3px;
+  line-height: 1.25;
+  text-align: left;
+}
+
+@media (max-width: 820px) {
+  .ingredient-main {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .controls-band {
+    grid-template-columns: 1fr;
+  }
+
+  .result-meter {
+    border-left: 0;
+    border-top: 1px solid #ddd5c7;
+    padding-left: 0;
+    padding-top: 12px;
+  }
+
+  .amount-readout {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .auto-toggle {
+    justify-content: flex-start;
+  }
+
+  .mix-summary {
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .mix-summary .status-pill {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
+}

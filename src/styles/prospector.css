@@ -1,0 +1,125 @@
+.prospector-card {
+  background: #fffefa;
+  border: 1px solid #ddd5c7;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(45, 37, 25, 0.08);
+  margin-bottom: 16px;
+  padding: 18px;
+}
+
+.prospector-settings summary {
+  color: #17211b;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.prospector-settings-grid,
+.sample-form,
+.probable-area-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.prospector-settings-grid {
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  margin-top: 16px;
+}
+
+.sample-form {
+  align-items: end;
+  grid-template-columns: repeat(3, minmax(90px, 1fr)) auto;
+}
+
+.help-button {
+  border-radius: 50%;
+  font-size: 18px;
+  min-height: 40px;
+  min-width: 40px;
+  padding: 0;
+}
+
+.prospector-help {
+  background: #f2f7fb;
+  border: 1px solid #c9ddea;
+  border-radius: 8px;
+  color: #21465f;
+  display: grid;
+  gap: 6px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  padding: 12px;
+}
+
+.probable-area-grid {
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+}
+
+.probable-area-grid div {
+  background: #edf4ef;
+  border: 1px solid #c4decf;
+  border-radius: 8px;
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+}
+
+.probable-area-grid span,
+.muted-text {
+  color: #6a6255;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.probable-area-grid strong {
+  font-size: 20px;
+}
+
+.samples-table-wrap {
+  overflow-x: auto;
+}
+
+.samples-table {
+  border-collapse: collapse;
+  min-width: 760px;
+  width: 100%;
+}
+
+.samples-table th,
+.samples-table td {
+  border-top: 1px solid #e5ded2;
+  padding: 10px 8px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.samples-table th {
+  color: #6a6255;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.samples-table input {
+  background: #ffffff;
+  border: 1px solid #cfc6b8;
+  border-radius: 6px;
+  color: #17211b;
+  min-height: 36px;
+  padding: 0 10px;
+  width: 90px;
+}
+
+.scan-cell {
+  color: #4d463d;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+  .prospector-settings-grid,
+  .sample-form,
+  .probable-area-grid {
+    grid-template-columns: 1fr;
+  }
+}
