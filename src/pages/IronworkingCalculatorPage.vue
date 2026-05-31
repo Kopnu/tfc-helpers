@@ -1,10 +1,13 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { INGOT_MB } from '../lib/alloyMath'
+import { readStoredValue, writeStoredValue } from '../lib/persistentState'
 
 const DEFAULT_BLOOM_CAST_IRON_MB = 144
 const BLOOM_CHARCOAL = 2
+const inventoryStorageKey = 'tfc-helpers:ironworking-inventory'
+const useInventoryStorageKey = 'tfc-helpers:ironworking-use-inventory'
 
 const ironSources = [
   { id: 'cast-iron-ingot', mb: INGOT_MB },
@@ -14,31 +17,27 @@ const ironSources = [
   { id: 'small-ore', mb: 16 }
 ]
 
-const mode = ref('bloom')
-const resultAmount = ref(1)
-const selectedSourceId = ref('normal-ore')
-const useInventory = ref(true)
-const inventory = reactive(
-  ironSources.reduce((counts, source) => {
-    counts[source.id] = 0
-    return counts
-  }, {})
-)
-const requiredInventory = reactive(
-  ironSources.reduce((counts, source) => {
-    counts[source.id] = 0
-    return counts
-  }, {})
-)
-
-const { t } = useI18n()
-
-const sourceName = (source) => t(`ironworking.sources.${source.id}`, { mb: source.mb ?? '' })
-
 const normalizeCount = (value) => {
   const parsed = Number(value)
   return Number.isFinite(parsed) && parsed > 0 ? Math.floor(parsed) : 0
 }
+
+const buildSourceCounts = (rawCounts = {}) =>
+  ironSources.reduce((counts, source) => {
+    counts[source.id] = normalizeCount(rawCounts?.[source.id])
+    return counts
+  }, {})
+
+const mode = ref('bloom')
+const resultAmount = ref(1)
+const selectedSourceId = ref('normal-ore')
+const useInventory = ref(readStoredValue(useInventoryStorageKey, true) !== false)
+const inventory = reactive(buildSourceCounts(readStoredValue(inventoryStorageKey, {})))
+const requiredInventory = reactive(buildSourceCounts())
+
+const { t } = useI18n()
+
+const sourceName = (source) => t(`ironworking.sources.${source.id}`, { mb: source.mb ?? '' })
 
 const sourceMb = (sourceId) => {
   const source = ironSources.find((item) => item.id === sourceId)
@@ -224,6 +223,14 @@ const materialSummary = computed(() => materialOptions.value[0] ?? emptyMaterial
 
 const portionCount = (option, sourceId) =>
   option.portions.find((portion) => portion.sourceId === sourceId)?.count ?? 0
+
+watch(useInventory, (nextUseInventory) => {
+  writeStoredValue(useInventoryStorageKey, nextUseInventory)
+}, { flush: 'sync' })
+
+watch(inventory, (nextInventory) => {
+  writeStoredValue(inventoryStorageKey, nextInventory)
+}, { deep: true, flush: 'sync' })
 </script>
 
 <template>

@@ -13,14 +13,38 @@ import {
   percentOf,
   possibleVolumes
 } from '../lib/alloyMath'
+import { readStoredValue, writeStoredValue } from '../lib/persistentState'
+
+const inventoryStorageKey = 'tfc-helpers:alloy-inventory'
+const useInventoryStorageKey = 'tfc-helpers:alloy-use-inventory'
+
+const normalizeInventoryCount = (value) => {
+  const parsed = Number(value)
+  return Number.isFinite(parsed) && parsed > 0 ? Math.floor(parsed) : 0
+}
+
+const buildInventoryState = (rawInventory = {}) => {
+  const inventoryState = {}
+  const ingredientIds = new Set(alloys.flatMap((alloy) => alloy.ingredients.map((ingredient) => ingredient.id)))
+
+  ingredientIds.forEach((ingredientId) => {
+    inventoryState[ingredientId] = {}
+
+    INVENTORY_PORTION_SIZES.forEach((size) => {
+      inventoryState[ingredientId][size] = normalizeInventoryCount(rawInventory?.[ingredientId]?.[size])
+    })
+  })
+
+  return inventoryState
+}
 
 const selectedAlloyId = ref(alloys[0]?.id ?? '')
 const resultUnit = ref('ingots')
 const resultAmount = ref(1)
-const useInventory = ref(false)
+const useInventory = ref(readStoredValue(useInventoryStorageKey, false) === true)
 const selectedVolumes = ref([])
 const autoIngredients = ref([])
-const inventory = reactive({})
+const inventory = reactive(buildInventoryState(readStoredValue(inventoryStorageKey, {})))
 
 const { t } = useI18n()
 const alloyName = (alloy) => t(`alloys.${alloy.id}`)
@@ -52,7 +76,10 @@ const ensureInventoryShape = () => {
     INVENTORY_PORTION_SIZES.forEach((size) => {
       if (inventory[ingredient.id][size] === undefined) {
         inventory[ingredient.id][size] = 0
+        return
       }
+
+      inventory[ingredient.id][size] = normalizeInventoryCount(inventory[ingredient.id][size])
     })
   })
 }
@@ -267,7 +294,14 @@ const toggleAutoIngredient = (state, checked) => {
 }
 
 watch([selectedAlloyId, totalMb], refreshSelection, { immediate: true })
-watch(useInventory, refreshSelection)
+watch(useInventory, (nextUseInventory) => {
+  writeStoredValue(useInventoryStorageKey, nextUseInventory)
+  refreshSelection()
+}, { flush: 'sync' })
+
+watch(inventory, (nextInventory) => {
+  writeStoredValue(inventoryStorageKey, nextInventory)
+}, { deep: true, flush: 'sync' })
 
 const inventorySignature = computed(() =>
   selectedAlloy.value.ingredients
