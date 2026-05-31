@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "Калькулятор сплавов",
-    "ironworkingTitle": "Калькулятор крицы и стали",
+    "ironworkingTitle": "Калькулятор Крицы и Стали",
     "prospectorPickTitle": "Помощник в поиске руды",
     "copyright": "2026 © Kopnu"
   },
@@ -9,7 +9,7 @@
     "label": "Основная навигация",
     "title": "TerraFirmaCraft",
     "alloys": "Сплавы",
-    "ironworking": "Крица и сталь",
+    "ironworking": "Крица и Сталь",
     "prospectorPick": "Поиск руды",
     "anvilHelper": "Anvil Helper"
   },
