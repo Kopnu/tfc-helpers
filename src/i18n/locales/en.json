@@ -95,6 +95,16 @@
       "helpLine1": "Aim at the block you sampled and press F3.",
       "helpLine2": "Find Targeted Block on the right side of the screen: it shows the selected block's X, Y, and Z coordinates."
     },
+    "sampleResult": {
+      "label": "Result",
+      "options": {
+        "traces": "Traces",
+        "small": "Small Sample",
+        "medium": "Medium Sample",
+        "large": "Large Sample",
+        "veryLarge": "Very Large Sample"
+      }
+    },
     "probableArea": {
       "title": "Probable Area",
       "empty": "Add the first sample to see the search area.",

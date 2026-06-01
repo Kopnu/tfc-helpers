@@ -9,10 +9,12 @@ const settings = reactive({
   sizeY: 25,
   sizeZ: 25
 })
+const sampleResults = ['traces', 'small', 'medium', 'large', 'veryLarge']
 const draftSample = reactive({
   x: null,
   y: null,
-  z: null
+  z: null,
+  result: 'small'
 })
 const samples = ref([])
 const showPositionHelp = ref(false)
@@ -30,6 +32,12 @@ const normalizeSetting = (key) => {
 
 const normalizeSample = (sample, key) => {
   sample[key] = normalizeInteger(sample[key]) ?? 0
+}
+
+const normalizeSampleResult = (sample) => {
+  if (!sampleResults.includes(sample.result)) {
+    sample.result = sampleResults[0]
+  }
 }
 
 const canAddSample = computed(() =>
@@ -99,7 +107,8 @@ const addSample = () => {
     id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${samples.value.length}`,
     x: normalizeInteger(draftSample.x),
     y: normalizeInteger(draftSample.y),
-    z: normalizeInteger(draftSample.z)
+    z: normalizeInteger(draftSample.z),
+    result: draftSample.result
   })
 
   draftSample.x = null
@@ -174,6 +183,14 @@ const resetSamples = () => {
         <span>Z</span>
         <input v-model.number="draftSample.z" type="number" />
       </label>
+      <label class="field">
+        <span>{{ t('prospector.sampleResult.label') }}</span>
+        <select v-model="draftSample.result">
+          <option v-for="result in sampleResults" :key="result" :value="result">
+            {{ t(`prospector.sampleResult.options.${result}`) }}
+          </option>
+        </select>
+      </label>
       <button type="submit" :disabled="!canAddSample">{{ t('prospector.addSample.add') }}</button>
     </form>
   </section>
@@ -224,6 +241,7 @@ const resetSamples = () => {
             <th>X</th>
             <th>Y</th>
             <th>Z</th>
+            <th>{{ t('prospector.sampleResult.label') }}</th>
             <th>{{ t('prospector.history.scanArea') }}</th>
             <th></th>
           </tr>
@@ -239,6 +257,13 @@ const resetSamples = () => {
             </td>
             <td>
               <input v-model.number="sample.z" type="number" @change="normalizeSample(sample, 'z')" />
+            </td>
+            <td>
+              <select v-model="sample.result" @change="normalizeSampleResult(sample)">
+                <option v-for="result in sampleResults" :key="result" :value="result">
+                  {{ t(`prospector.sampleResult.options.${result}`) }}
+                </option>
+              </select>
             </td>
             <td class="scan-cell">
               X {{ scanBoundsForSample(sample).x.min }}...{{ scanBoundsForSample(sample).x.max }},

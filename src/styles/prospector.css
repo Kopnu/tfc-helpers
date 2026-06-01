@@ -28,7 +28,7 @@
 
 .sample-form {
   align-items: end;
-  grid-template-columns: repeat(3, minmax(90px, 1fr)) auto;
+  grid-template-columns: repeat(3, minmax(90px, 1fr)) minmax(160px, 1.3fr) auto;
 }
 
 .help-button {
@@ -99,14 +99,22 @@
   font-weight: 900;
 }
 
-.samples-table input {
+.samples-table input,
+.samples-table select {
   background: #ffffff;
   border: 1px solid #cfc6b8;
   border-radius: 6px;
   color: #17211b;
   min-height: 36px;
   padding: 0 10px;
+}
+
+.samples-table input {
   width: 90px;
+}
+
+.samples-table select {
+  min-width: 150px;
 }
 
 .scan-cell {
