@@ -99,6 +99,20 @@
   color: #b42318;
 }
 
+.ingredient-row.expandable {
+  cursor: pointer;
+}
+
+.ingredient-row.expandable:focus-visible {
+  outline: 2px solid #2d6a4f;
+  outline-offset: 4px;
+}
+
+.ingredient-row.expandable:hover .ingredient-title h3,
+.ingredient-row.expanded .ingredient-title h3 {
+  color: #244434;
+}
+
 .ingredient-main {
   align-items: center;
   display: flex;
@@ -109,6 +123,23 @@
 .ingredient-title {
   display: grid;
   gap: 4px;
+}
+
+.ingredient-title h3 {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+}
+
+.composition-caret {
+  align-items: center;
+  color: #6a6255;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 900;
+  justify-content: center;
+  line-height: 1;
+  width: 10px;
 }
 
 .ingredient-title span,
@@ -182,6 +213,106 @@
   text-align: left;
 }
 
+.alloy-breakdown {
+  background: #faf7ef;
+  border: 1px solid #e1d6c4;
+  border-radius: 8px;
+  cursor: default;
+  padding: 10px 12px;
+}
+
+.recipe-tree-branch > summary::marker {
+  content: '';
+}
+
+.recipe-tree-branch > summary::-webkit-details-marker {
+  display: none;
+}
+
+.recipe-tree-branch > summary::before {
+  color: #6a6255;
+  content: '>';
+  font-size: 12px;
+  font-weight: 900;
+  left: 10px;
+  line-height: 1;
+  position: absolute;
+  top: 14px;
+}
+
+.recipe-tree-branch[open] > summary::before {
+  content: 'v';
+}
+
+.recipe-tree {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.recipe-tree.nested {
+  border-left: 1px solid #d7cbb9;
+  margin-left: 8px;
+  padding-left: 14px;
+}
+
+.recipe-tree-item {
+  display: grid;
+  gap: 8px;
+}
+
+.recipe-tree-branch {
+  display: grid;
+  gap: 8px;
+}
+
+.recipe-tree-node {
+  align-items: flex-start;
+  background: #fffefa;
+  border: 1px solid #e5ded2;
+  border-radius: 7px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  min-height: 38px;
+  padding: 8px 10px;
+}
+
+.recipe-tree-branch > summary.recipe-tree-node {
+  cursor: pointer;
+  list-style: none;
+  padding-left: 28px;
+  position: relative;
+}
+
+.recipe-tree-name {
+  color: #2f2a24;
+  font-weight: 900;
+}
+
+.recipe-tree-meta {
+  align-items: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.recipe-tree-amount {
+  color: #21465f;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.recipe-tree-range {
+  color: #6a6255;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
 @media (max-width: 820px) {
   .ingredient-main {
     align-items: stretch;
@@ -217,5 +348,14 @@
   .mix-summary .status-pill {
     flex-basis: 100%;
     margin-right: 0;
+  }
+
+  .recipe-tree-node {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .recipe-tree-meta {
+    justify-content: flex-start;
   }
 }

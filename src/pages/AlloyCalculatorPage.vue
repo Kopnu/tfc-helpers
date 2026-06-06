@@ -1,7 +1,8 @@
 <script setup>
 import { computed, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { alloys } from '../data/alloys'
+import AlloyRecipeTree from '../components/AlloyRecipeTree.vue'
+import { alloys, findAlloyRecipeForIngredient } from '../data/alloys'
 import {
   DISPLAY_INVENTORY_PORTION_SIZES,
   INVENTORY_PORTION_SIZES,
@@ -46,11 +47,28 @@ const selectedVolumes = ref([])
 const autoIngredients = ref([])
 const inventory = reactive(buildInventoryState(readStoredValue(inventoryStorageKey, {})))
 const useInventoryForIngredient = reactive({})
+const expandedCompositions = reactive({})
 
 const { t } = useI18n()
 const alloyName = (alloy) => t(`alloys.${alloy.id}`)
 const ingredientName = (ingredient) => t(`ingredients.${ingredient.id}`)
 const portionLabel = (size) => (size === INGOT_MB ? t('inventory.ingotPortion') : `${size} mB`)
+const isAlloyIngredient = (ingredient) => Boolean(findAlloyRecipeForIngredient(ingredient.id))
+const compositionKey = (state) => `${selectedAlloy.value.id}:${state.index}:${state.ingredient.id}`
+const isCompositionExpanded = (state) => Boolean(expandedCompositions[compositionKey(state)])
+
+const isCompositionToggleIgnored = (event) =>
+  event.target instanceof Element &&
+  Boolean(event.target.closest('input, button, select, textarea, a, label, details, summary, .alloy-breakdown'))
+
+const toggleCompositionFromRow = (state, event) => {
+  if (!isAlloyIngredient(state.ingredient) || isCompositionToggleIgnored(event)) {
+    return
+  }
+
+  const key = compositionKey(state)
+  expandedCompositions[key] = !expandedCompositions[key]
+}
 
 const selectedAlloy = computed(() => alloys.find((alloy) => alloy.id === selectedAlloyId.value) ?? alloys[0])
 const selectedAlloyName = computed(() => alloyName(selectedAlloy.value))
@@ -430,11 +448,26 @@ watch(inventorySignature, () => {
       v-for="state in ingredientStates"
       :key="state.ingredient.id"
       class="ingredient-row"
-      :class="{ invalid: !state.inRange || !state.canBuild }"
+      :class="{
+        invalid: !state.inRange || !state.canBuild,
+        expandable: isAlloyIngredient(state.ingredient),
+        expanded: isCompositionExpanded(state)
+      }"
+      :role="isAlloyIngredient(state.ingredient) ? 'button' : null"
+      :tabindex="isAlloyIngredient(state.ingredient) ? 0 : null"
+      :aria-expanded="isAlloyIngredient(state.ingredient) ? isCompositionExpanded(state) : null"
+      @click="toggleCompositionFromRow(state, $event)"
+      @keydown.enter="toggleCompositionFromRow(state, $event)"
+      @keydown.space.prevent="toggleCompositionFromRow(state, $event)"
     >
       <div class="ingredient-main">
         <div class="ingredient-title">
-          <h3>{{ ingredientName(state.ingredient) }}</h3>
+          <h3>
+            <span v-if="isAlloyIngredient(state.ingredient)" class="composition-caret" aria-hidden="true">
+              {{ isCompositionExpanded(state) ? 'v' : '>' }}
+            </span>
+            {{ ingredientName(state.ingredient) }}
+          </h3>
           <span>{{ state.ingredient.min }}-{{ state.ingredient.max }}%</span>
         </div>
 
@@ -483,6 +516,10 @@ watch(inventorySignature, () => {
           </span>
           <span v-if="combo.totalPieces === 0">0 mB</span>
         </div>
+      </div>
+
+      <div v-if="isAlloyIngredient(state.ingredient) && isCompositionExpanded(state)" class="alloy-breakdown">
+        <AlloyRecipeTree :ingredient-id="state.ingredient.id" :volume="state.selectedVolume" />
       </div>
     </article>
   </section>

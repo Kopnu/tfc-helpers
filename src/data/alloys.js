@@ -47,6 +47,7 @@ export const alloys = [
   },
   {
     id: 'weak-steel',
+    resultId: 'black-steel',
     ingredients: [
       { id: 'steel', min: 50, max: 70 },
       { id: 'nickel', min: 15, max: 25 },
@@ -72,3 +73,6 @@ export const alloys = [
     ]
   }
 ]
+
+export const findAlloyRecipeForIngredient = (ingredientId) =>
+  alloys.find((alloy) => alloy.id === ingredientId || alloy.resultId === ingredientId) ?? null
