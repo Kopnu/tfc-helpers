@@ -134,9 +134,9 @@
     "brass": "Brass",
     "rose-gold": "Rose Gold",
     "sterling-silver": "Sterling Silver",
-    "weak-steel": "Weak Steel",
-    "weak-blue-steel": "Weak Blue Steel",
-    "weak-red-steel": "Weak Red Steel"
+    "weak-steel": "Black Steel",
+    "weak-blue-steel": "Blue Steel",
+    "weak-red-steel": "Red Steel"
   },
   "ingredients": {
     "bismuth": "Bismuth",
