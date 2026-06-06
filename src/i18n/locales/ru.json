@@ -135,9 +135,9 @@
     "brass": "Латунь",
     "rose-gold": "Розовое золото",
     "sterling-silver": "Стерлинговое серебро",
-    "weak-steel": "Чёрная сталь",
-    "weak-blue-steel": "Синяя сталь",
-    "weak-red-steel": "Красная сталь"
+    "weak-steel": "Слабая сталь",
+    "weak-blue-steel": "Слабая синяя сталь",
+    "weak-red-steel": "Слабая красная сталь"
   },
   "ingredients": {
     "bismuth": "Висмут",
