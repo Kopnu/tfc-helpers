@@ -111,6 +111,18 @@
   gap: 4px;
 }
 
+.inventory-row .inventory-ingredient-toggle {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  min-height: 38px;
+}
+
+.inventory-ingredient-toggle input {
+  height: 18px;
+  width: 18px;
+}
+
 .inventory-row label span {
   color: #6a6255;
   font-size: 12px;
@@ -148,7 +160,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .inventory-row strong {
+  .inventory-ingredient-toggle {
     grid-column: 1 / -1;
   }
 }

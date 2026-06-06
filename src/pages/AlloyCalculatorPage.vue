@@ -45,6 +45,7 @@ const useInventory = ref(readStoredValue(useInventoryStorageKey, false) === true
 const selectedVolumes = ref([])
 const autoIngredients = ref([])
 const inventory = reactive(buildInventoryState(readStoredValue(inventoryStorageKey, {})))
+const useInventoryForIngredient = reactive({})
 
 const { t } = useI18n()
 const alloyName = (alloy) => t(`alloys.${alloy.id}`)
@@ -81,11 +82,18 @@ const ensureInventoryShape = () => {
 
       inventory[ingredient.id][size] = normalizeInventoryCount(inventory[ingredient.id][size])
     })
+
+    if (useInventoryForIngredient[ingredient.id] === undefined) {
+      useInventoryForIngredient[ingredient.id] = true
+    }
   })
 }
 
+const usesInventoryForIngredient = (ingredient) =>
+  useInventory.value && useInventoryForIngredient[ingredient.id] !== false
+
 const limitsForIngredient = (ingredient) => {
-  if (!useInventory.value) {
+  if (!usesInventoryForIngredient(ingredient)) {
     return {}
   }
 
@@ -293,9 +301,19 @@ const toggleAutoIngredient = (state, checked) => {
   }
 }
 
+const toggleIngredientInventory = (ingredient, checked) => {
+  useInventoryForIngredient[ingredient.id] = checked
+  refreshSelection()
+}
+
 watch([selectedAlloyId, totalMb], refreshSelection, { immediate: true })
 watch(useInventory, (nextUseInventory) => {
   writeStoredValue(useInventoryStorageKey, nextUseInventory)
+  if (nextUseInventory) {
+    selectedAlloy.value.ingredients.forEach((ingredient) => {
+      useInventoryForIngredient[ingredient.id] = true
+    })
+  }
   refreshSelection()
 }, { flush: 'sync' })
 
@@ -377,7 +395,14 @@ watch(inventorySignature, () => {
 
     <div v-if="useInventory" class="inventory-grid">
       <div v-for="ingredient in selectedAlloy.ingredients" :key="ingredient.id" class="inventory-row">
-        <strong>{{ ingredientName(ingredient) }}</strong>
+        <label class="inventory-ingredient-toggle">
+          <input
+            type="checkbox"
+            :checked="useInventoryForIngredient[ingredient.id] !== false"
+            @change="toggleIngredientInventory(ingredient, $event.target.checked)"
+          />
+          <strong>{{ ingredientName(ingredient) }}</strong>
+        </label>
         <label v-for="size in DISPLAY_INVENTORY_PORTION_SIZES" :key="size">
           <span>{{ portionLabel(size) }}</span>
           <input v-model.number="inventory[ingredient.id][size]" min="0" type="number" />
